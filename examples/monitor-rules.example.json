@@ -1,0 +1,51 @@
+{
+  "version": 1,
+  "rules": [
+    {
+      "name": "living-room-too-cold",
+      "device": "Living Room",
+      "when": {
+        "metric": "roomTemp",
+        "below": 64,
+        "unit": "F",
+        "forSamples": 2,
+        "hysteresis": 1
+      },
+      "cooldownSeconds": 1800,
+      "action": {
+        "exec": "/home/user/bin/heat-alert.sh",
+        "args": [
+          "{{device}}",
+          "{{roomTemp}}",
+          "{{humidity}}",
+          "{{ts}}"
+        ]
+      }
+    },
+    {
+      "name": "bedroom-too-hot-night",
+      "device": "Bedroom",
+      "active": {
+        "timezone": "America/Los_Angeles",
+        "start": "22:00",
+        "end": "07:00"
+      },
+      "when": {
+        "metric": "roomTemp",
+        "above": 72,
+        "unit": "F",
+        "forSamples": 2,
+        "hysteresis": 1
+      },
+      "cooldownSeconds": 1800,
+      "action": {
+        "exec": "/home/user/bin/night-cooling-alert.sh",
+        "args": [
+          "{{device}}",
+          "{{roomTemp}}",
+          "{{targetTemp}}"
+        ]
+      }
+    }
+  ]
+}
