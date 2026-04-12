@@ -50,13 +50,13 @@ A CLI and monitoring daemon for [Cielo Breez](https://www.cielowigle.com/) smart
 Install directly from the flake:
 
 ```bash
-nix profile install github:adampoit/cielo
+nix profile install github:adampoit/cielo-cli
 ```
 
 Or run without installing:
 
 ```bash
-nix run github:adampoit/cielo -- devices
+nix run github:adampoit/cielo-cli -- devices
 ```
 
 ### Standalone Binary
@@ -410,7 +410,7 @@ For NixOS users, a complete module is provided:
 
 ```nix
 {
-  inputs.cielo.url = "github:adampoit/cielo";
+  inputs.cielo.url = "github:adampoit/cielo-cli";
 
   outputs = { nixpkgs, cielo, ... }: {
     nixosConfigurations.myhost = nixpkgs.lib.nixosSystem {
