@@ -21,6 +21,12 @@ jobs:
         with:
           dotnet-version: 10.0.x
 
+      - name: Restore local tools
+        run: dotnet tool restore
+
+      - name: Check C# formatting
+        run: dotnet tool run csharpier check .
+
       - name: Run test suite
         run: dotnet test cielo.slnx --configuration Release
 

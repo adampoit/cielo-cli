@@ -1,0 +1,9 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "formatter": {
+    "csharpier": {
+      "command": ["dotnet", "tool", "run", "csharpier", "format", "$FILE"],
+      "extensions": [".cs", ".csproj", ".props", ".targets", ".slnx"]
+    }
+  }
+}
